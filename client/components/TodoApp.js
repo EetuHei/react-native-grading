@@ -101,9 +101,7 @@ export default class TodoApp extends Component {
             />
           )}
         </Stack.Screen>
-        <Stack.Screen name="Post">
-          {props => <Post {...props} todos={this.state.todos} />}
-        </Stack.Screen>
+        <Stack.Screen name="Post">{props => <Post {...props} />}</Stack.Screen>
       </Stack.Navigator>
     );
   }
