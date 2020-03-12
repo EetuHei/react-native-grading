@@ -1,33 +1,45 @@
 import React from "react";
-import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  StyleSheet,
+  TouchableOpacity
+} from "react-native";
 
 const View1 = props => {
   console.log("these are the props", props.todos);
   return (
-    <View style={styles.screen}>
-      {props.todos.map(t => (
-        <TouchableOpacity
-          onPress={() => props.navigation.navigate("Post", { postID: t.id })}
-        >
-          <Text style={styles.textTitle} key={t.id}>
-            {t.title + "\n"}
-            <Text style={styles.text}>{t.category + "\n"}</Text>
-            <Text style={styles.text}>{t.city + "\n"}</Text>
-            <Text style={styles.text}>{t.price + "€"}</Text>
-            <Text style={styles.text}>{t.id + "\n"}</Text>
-          </Text>
-        </TouchableOpacity>
-      ))}
-      <TouchableOpacity onPress={props.onLogout}>
-        <View style={styles.primaryButton}>
-          <Text style={styles.primaryButtonText}>Logout</Text>
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.screen}>
+          {props.todos.map(t => (
+            <TouchableOpacity
+              onPress={() =>
+                props.navigation.navigate("Post", {
+                  postID: t.id,
+                  postData: props.todos
+                })
+              }
+            >
+              <Text style={styles.textTitle} key={t.id}>
+                {t.title + "\n"}
+                <Text style={styles.text}>{t.category + "\n"}</Text>
+                <Text style={styles.text}>{t.city + "\n"}</Text>
+                <Text style={styles.text}>{t.price + "€\n"}</Text>
+                <Text style={styles.text}>{t.id + "\n"}</Text>
+              </Text>
+            </TouchableOpacity>
+          ))}
+          <TouchableOpacity onPress={props.onLogout}>
+            <View style={styles.primaryButton}>
+              <Text style={styles.primaryButtonText}>Logout</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
-      {/* <Button
-        title="Go to Todo List View"
-        onPress={() => props.navigation.navigate("Todos")}
-      /> */}
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
