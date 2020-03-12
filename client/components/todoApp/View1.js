@@ -1,21 +1,27 @@
-import React from 'react'
-import { View, Text, Button } from 'react-native'
+import React from "react";
+import { View, Text, Button } from "react-native";
 
-const View1 = (props) => {
+const View1 = props => {
+  console.log("these are the props", props.todos);
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text style={{ fontSize: 50, fontWeight: '700' }}>Application content</Text>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>You have successfully logged in</Text>
-      <Button
+      {props.todos.map(t => (
+        <Text key={t.id}>
+          {t.title}
+          <Text>{t.category}</Text>
+          <Text>{t.city}</Text>
+          <Text>{t.price}</Text>
+          <Text>{t.id}</Text>
+        </Text>
+      ))}
+      {/* <Button
         title="Go to Todo List View"
-        onPress={() => props.navigation.navigate('Todos')}
-      />
-      <Button
-        title="Logout"
-        onPress={ props.onLogout }
-      />
+        onPress={() => props.navigation.navigate("Todos")}
+      /> */}
+      <Button title="Logout" onPress={props.onLogout} />
     </View>
-  )
-}
+  );
+};
 
-export default View1
+export default View1;
