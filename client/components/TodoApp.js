@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import View1 from "./todoApp/View1";
 import Todos from "./todoApp/Todos";
+import Post from "./todoApp/Post";
 
 const Stack = createStackNavigator();
 
@@ -99,6 +100,9 @@ export default class TodoApp extends Component {
               onTodoAdd={this.onTodoAdd}
             />
           )}
+        </Stack.Screen>
+        <Stack.Screen name="Post">
+          {props => <Post {...props} todos={this.state.todos} />}
         </Stack.Screen>
       </Stack.Navigator>
     );
