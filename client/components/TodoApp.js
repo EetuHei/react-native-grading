@@ -16,7 +16,7 @@ export default class TodoApp extends Component {
 
   componentDidMount() {
     console.log("getting todos");
-    fetch(this.props.apiURI + "", { ///api/v1/posts/all-posts
+    fetch(this.props.apiURI + "/api/v1/posts/all-posts", {
       method: "GET",
       headers: {
         Authorization: "Bearer " + this.props.jwt
@@ -38,7 +38,7 @@ export default class TodoApp extends Component {
         console.log("Received following JSON");
         console.log(json);
 
-        this.setState({ todos: json });
+        this.setState({ todos: json.data.posts });
       })
       .catch(error => {
         console.log("Error message:");
@@ -69,7 +69,6 @@ export default class TodoApp extends Component {
       .then(json => {
         console.log("Todos POST successful");
         console.log("Received following JSON");
-        console.log(json);
 
         this.setState({ todos: json });
       })
@@ -79,14 +78,18 @@ export default class TodoApp extends Component {
       });
   };
 
-  
-  
   render() {
-    console.log(this.state.todos, 'all em todos');
+    console.log(this.state.todos, "all em todos");
     return (
       <Stack.Navigator>
         <Stack.Screen name="View1">
-          {props => <View1 {...props} onLogout={this.props.onLogout} />}
+          {props => (
+            <View1
+              {...props}
+              todos={this.state.todos}
+              onLogout={this.props.onLogout}
+            />
+          )}
         </Stack.Screen>
         <Stack.Screen name="Todos" options={{ title: "Todo List" }}>
           {props => (
