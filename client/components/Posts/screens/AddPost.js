@@ -62,37 +62,37 @@ const AddPost = props => {
   return (
     <View style={styles.screen}>
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder="Title"
         onChangeText={value => setTitle(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder="Description"
         onChangeText={value => setDescription(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder="Category: Car"
         onChangeText={value => setCategory(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder="City: Oulu"
         onChangeText={value => setCity(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder="Country: Fi"
         onChangeText={value => setCountry(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder="Price"
         onChangeText={value => setPrice(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder="Delivery"
         onChangeText={value => setDelivery(value)}
       />
@@ -118,8 +118,19 @@ const styles = StyleSheet.create({
     color: "white"
   },
   text: {
-    fontSize: 20,
+    fontSize: 18,
     color: "white"
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: 10,
+    height: 30,
+    width: "75%",
+    backgroundColor: "white",
+    textAlign: "center",
+    fontSize: 16,
+    marginTop: 0,
+    marginBottom: 5
   },
   textTitle: {
     fontSize: 30,
