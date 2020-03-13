@@ -9,7 +9,7 @@ import SignUpScreen from "./components/Auth/screens/SingnUpScreen";
 import SignUpCompleted from "./components/Auth/screens/SignUpCompleted";
 import LoadingScreen from "./components/LoadingScreen";
 import TodoApp from "./components/TodoApp";
-import HomeView from "./components/Posts/screens/HomeView";
+import GuestView from "./components/guestmode/screen/GuestView";
 
 const Stack = createStackNavigator();
 const secureStoreTokenName = "demoAppJWT2";
@@ -84,13 +84,10 @@ export default class MainApp extends Component {
         >
           {props => <SignUpCompleted {...props}></SignUpCompleted>}
         </Stack.Screen>
-        <Stack.Screen
-          name="HomeView"
-          options={{
-            headerShown: false
-          }}
-        >
-          {props => <HomeView {...props} apiURI={this.props.apiURI}></HomeView>}
+        <Stack.Screen name="GuestView">
+          {props => (
+            <GuestView {...props} apiURI={this.props.apiURI}></GuestView>
+          )}
         </Stack.Screen>
       </>
     );
