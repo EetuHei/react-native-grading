@@ -49,39 +49,7 @@ export default class TodoApp extends Component {
         console.log(error.message);
       });
   }
-
-  onTodoAdd = (description, dueDate) => {
-    fetch(this.props.apiURI + "/todosJWT", {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + this.props.jwt,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ description, dueDate })
-    })
-      .then(response => {
-        if (response.ok == false) {
-          throw new Error(
-            "HTTP Code " +
-              response.status +
-              " - " +
-              JSON.stringify(response.json())
-          );
-        }
-        return response.json();
-      })
-      .then(json => {
-        console.log("Todos POST successful");
-        console.log("Received following JSON");
-
-        this.setState({ todos: json });
-      })
-      .catch(error => {
-        console.log("Error message:");
-        console.log(error.message);
-      });
-  };
-
+  
   render() {
     console.log(this.state.todos, "all em todos");
     return (
