@@ -15,6 +15,13 @@ const View1 = props => {
     <SafeAreaView>
       <ScrollView>
         <View style={styles.screen}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate("AddPost")}
+          >
+            <View style={styles.primaryButton}>
+              <Text style={styles.primaryButtonText}>Add Post</Text>
+            </View>
+          </TouchableOpacity>
           {props.todos.map(t => (
             <TouchableOpacity
               onPress={() =>
@@ -39,13 +46,6 @@ const View1 = props => {
           <TouchableOpacity onPress={props.onLogout}>
             <View style={styles.primaryButton}>
               <Text style={styles.primaryButtonText}>Logout</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => props.navigation.navigate("AddPost")}
-          >
-            <View style={styles.primaryButton}>
-              <Text style={styles.primaryButtonText}>Add Post</Text>
             </View>
           </TouchableOpacity>
         </View>
