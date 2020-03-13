@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import View1 from "./todoApp/View1";
 import Todos from "./todoApp/Todos";
 import Post from "./todoApp/Post";
+import AddPost from "./Posts/screens/AddPost";
 
 const Stack = createStackNavigator();
 
@@ -102,6 +103,15 @@ export default class TodoApp extends Component {
           )}
         </Stack.Screen>
         <Stack.Screen name="Post">{props => <Post {...props} />}</Stack.Screen>
+        <Stack.Screen name="AddPost">
+          {props => (
+            <AddPost
+              {...props}
+              jwt={this.props.jwt}
+              apiURI={this.props.apiURI}
+            />
+          )}
+        </Stack.Screen>
       </Stack.Navigator>
     );
   }
