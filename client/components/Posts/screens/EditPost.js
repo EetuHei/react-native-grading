@@ -8,18 +8,23 @@ import {
   TextInput
 } from "react-native";
 
-const AddPost = props => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [price, setPrice] = useState("");
-  const [delivery, setDelivery] = useState("");
+const EditPost = ({ route, props }) => {
+  const { postID, postData, propData, tokenData, apiUriData } = route.params;
+  const [title, setTitle] = useState(postData.title);
+  const [description, setDescription] = useState(postData.description);
+  const [category, setCategory] = useState(postData.category);
+  const [city, setCity] = useState(postData.city);
+  const [country, setCountry] = useState(postData.country);
+  const [price, setPrice] = useState(postData.price);
+  const [delivery, setDelivery] = useState(postData.delivery);
 
-  function createPostPressed() {
-    fetch(props.apiURI + "/api/v1/posts/create-post", {
-      method: "POST",
+  console.log(apiUriData);
+  console.log(postID);
+  console.log(postData.title);
+
+  function editPostPressed() {
+    fetch(apiUriData + "/api/v1/posts/edit-post/" + postID, {
+      method: "PUT",
       body: JSON.stringify({
         title,
         description,
@@ -31,7 +36,7 @@ const AddPost = props => {
       }),
       headers: {
         "Content-type": "application/json",
-        Authorization: "Bearer " + props.jwt
+        Authorization: "Bearer " + tokenData
       }
     })
       .then(response => {
@@ -48,7 +53,7 @@ const AddPost = props => {
       .then(json => {
         console.log(json);
 
-        props.navigation.reset({
+        propData.navigation.reset({
           index: 0,
           routes: [{ name: "View1" }]
         });
@@ -63,42 +68,42 @@ const AddPost = props => {
     <View style={styles.screen}>
       <TextInput
         style={styles.text}
-        placeholder="Title"
+        placeholder={postData.title}
         onChangeText={value => setTitle(value)}
       />
       <TextInput
         style={styles.text}
-        placeholder="Description"
+        placeholder={postData.description}
         onChangeText={value => setDescription(value)}
       />
       <TextInput
         style={styles.text}
-        placeholder="Category: Car"
+        placeholder={postData.category}
         onChangeText={value => setCategory(value)}
       />
       <TextInput
         style={styles.text}
-        placeholder="City: Oulu"
+        placeholder={postData.city}
         onChangeText={value => setCity(value)}
       />
       <TextInput
         style={styles.text}
-        placeholder="Country: Fi"
+        placeholder={postData.country}
         onChangeText={value => setCountry(value)}
       />
       <TextInput
         style={styles.text}
-        placeholder="Price"
+        placeholder={postData.price}
         onChangeText={value => setPrice(value)}
       />
       <TextInput
         style={styles.text}
-        placeholder="Delivery"
+        placeholder={postData.delivery}
         onChangeText={value => setDelivery(value)}
       />
-      <TouchableOpacity onPress={() => createPostPressed()}>
+      <TouchableOpacity onPress={() => editPostPressed()}>
         <View style={styles.primaryButton}>
-          <Text style={styles.primaryButtonText}>Add Post</Text>
+          <Text style={styles.primaryButtonText}>Edit Post</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -142,4 +147,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AddPost;
+export default EditPost;
