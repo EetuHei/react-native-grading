@@ -1,21 +1,40 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
-const Post = ({ route }) => {
-  const { postID } = route.params;
-  const { postData } = route.params;
+const Post = ({ route, props }) => {
+  const { postID, postData, propData, tokenData, apiUriData } = route.params;
+
   const findCurrentPostById = postData.find(x => x.id === postID);
-  console.log(findCurrentPostById, 'current post data by id');
+  console.log(findCurrentPostById, "current post data by id");
+  console.log(tokenData);
+
   return (
     <View style={styles.screen}>
       <Text style={styles.textTitle}>
         {findCurrentPostById.title + "\n"}
-        <Text style={styles.text}>{findCurrentPostById.description + "\n"}</Text>
+        <Text style={styles.text}>
+          {findCurrentPostById.description + "\n"}
+        </Text>
         <Text style={styles.text}>{findCurrentPostById.category + "\n"}</Text>
         <Text style={styles.text}>{findCurrentPostById.city + "\n"}</Text>
         <Text style={styles.text}>{findCurrentPostById.price + "€\n"}</Text>
         <Text style={styles.text}>{findCurrentPostById.id + "\n"}</Text>
       </Text>
+      <TouchableOpacity
+        onPress={() =>
+          propData.navigation.navigate("EditPost", {
+            tokenData: tokenData,
+            apiUriData: apiUriData,
+            postID: postID,
+            postData: findCurrentPostById,
+            propData: propData
+          })
+        }
+      >
+        <View style={styles.primaryButton}>
+          <Text style={styles.primaryButtonText}>Edit Post</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
