@@ -10,6 +10,7 @@ import {
 
 const View1 = props => {
   console.log("these are the props", props.todos);
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -19,7 +20,10 @@ const View1 = props => {
               onPress={() =>
                 props.navigation.navigate("Post", {
                   postID: t.id,
-                  postData: props.todos
+                  postData: props.todos,
+                  propData: props,
+                  tokenData: props.jwt,
+                  apiUriData: props.apiURI
                 })
               }
             >
