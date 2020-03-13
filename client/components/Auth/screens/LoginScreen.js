@@ -66,7 +66,16 @@ const LoginScreen = props => {
           <Text style={styles.secondaryButtonText}>Signup</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => props.navigation.navigate("HomeView")}>
+      <TouchableOpacity
+        onPress={() =>
+          props.navigation.navigate("GuestView", {
+            postData: props.todos,
+            propData: props,
+            tokenData: props.jwt,
+            apiUriData: props.apiURI
+          })
+        }
+      >
         <View style="">
           <Text style={styles.secondaryButtonText}>Continue as guest</Text>
         </View>
