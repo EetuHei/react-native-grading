@@ -67,37 +67,37 @@ const EditPost = ({ route, props }) => {
   return (
     <View style={styles.screen}>
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder={postData.title}
         onChangeText={value => setTitle(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder={postData.description}
         onChangeText={value => setDescription(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder={postData.category}
         onChangeText={value => setCategory(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder={postData.city}
         onChangeText={value => setCity(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder={postData.country}
         onChangeText={value => setCountry(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder={postData.price}
         onChangeText={value => setPrice(value)}
       />
       <TextInput
-        style={styles.text}
+        style={styles.input}
         placeholder={postData.delivery}
         onChangeText={value => setDelivery(value)}
       />
@@ -125,6 +125,17 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     color: "white"
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: 10,
+    height: 30,
+    width: "75%",
+    backgroundColor: "white",
+    textAlign: "center",
+    fontSize: 16,
+    marginTop: 0,
+    marginBottom: 5
   },
   textTitle: {
     fontSize: 30,
