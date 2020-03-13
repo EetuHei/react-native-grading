@@ -4,6 +4,8 @@ import {
   Text,
   StyleSheet,
   TextInput,
+  SafeAreaView,
+  ScrollView,
   TouchableOpacity
 } from "react-native";
 
@@ -62,91 +64,95 @@ const SignUpScreen = props => {
   }
 
   return (
-    <View style={styles.screen}>
-      <Text style={styles.header}>Sign Up</Text>
-      <Text style={styles.text}>Please enter your username</Text>
-      <TextInput
-        style={styles.input}
-        value={username}
-        placeholder="johndoe"
-        onChangeText={value => setUsername(value)}
-      />
-      <Text style={styles.text}>Please enter your full name</Text>
-      <TextInput
-        style={styles.input}
-        value={name}
-        placeholder="John Wick"
-        onChangeText={value => setName(value)}
-      />
-      <Text style={styles.text}>Please enter your address</Text>
-      <TextInput
-        style={styles.input}
-        value={address}
-        placeholder="kotkantie 2"
-        onChangeText={value => setAddress(value)}
-      />
-      <Text style={styles.text}>Please enter your city</Text>
-      <TextInput
-        style={styles.input}
-        value={city}
-        placeholder="Oulu"
-        onChangeText={value => setCity(value)}
-      />
-      <Text style={styles.text}>Please enter your country</Text>
-      <TextInput
-        style={styles.input}
-        value={country}
-        placeholder="Fi"
-        onChangeText={value => setCountry(value)}
-      />
-      <Text style={styles.text}>Please enter your phone number</Text>
-      <TextInput
-        style={styles.input}
-        value={phoneNumber}
-        placeholder="1234561234"
-        onChangeText={value => setPhoneNumber(value)}
-      />
-      <Text style={styles.text}>Please enter your email</Text>
-      <TextInput
-        style={styles.input}
-        value={email}
-        placeholder="test@email.com"
-        onChangeText={value => setEmail(value)}
-      />
-      <Text style={styles.text}>Please enter your password</Text>
-      <TextInput
-        style={styles.input}
-        value={password}
-        placeholder="password"
-        secureTextEntry={true}
-        onChangeText={value => setPassword(value)}
-      />
-      <Text style={styles.text}>Please re-enter your password</Text>
-      <TextInput
-        style={styles.input}
-        value={passwordConfirmation}
-        placeholder="password"
-        secureTextEntry={true}
-        onChangeText={value => setPasswordConfirmation(value)}
-      />
-      <TouchableOpacity onPress={() => signupPressed()}>
-        <View style={styles.primaryButton}>
-          <Text style={styles.primaryButtonText}>Sign up</Text>
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.screen}>
+          <Text style={styles.header}>Sign Up</Text>
+          <Text style={styles.text}>Please enter your username</Text>
+          <TextInput
+            style={styles.input}
+            value={username}
+            placeholder="johndoe"
+            onChangeText={value => setUsername(value)}
+          />
+          <Text style={styles.text}>Please enter your full name</Text>
+          <TextInput
+            style={styles.input}
+            value={name}
+            placeholder="John Wick"
+            onChangeText={value => setName(value)}
+          />
+          <Text style={styles.text}>Please enter your address</Text>
+          <TextInput
+            style={styles.input}
+            value={address}
+            placeholder="kotkantie 2"
+            onChangeText={value => setAddress(value)}
+          />
+          <Text style={styles.text}>Please enter your city</Text>
+          <TextInput
+            style={styles.input}
+            value={city}
+            placeholder="Oulu"
+            onChangeText={value => setCity(value)}
+          />
+          <Text style={styles.text}>Please enter your country</Text>
+          <TextInput
+            style={styles.input}
+            value={country}
+            placeholder="Fi"
+            onChangeText={value => setCountry(value)}
+          />
+          <Text style={styles.text}>Please enter your phone number</Text>
+          <TextInput
+            style={styles.input}
+            value={phoneNumber}
+            placeholder="1234561234"
+            onChangeText={value => setPhoneNumber(value)}
+          />
+          <Text style={styles.text}>Please enter your email</Text>
+          <TextInput
+            style={styles.input}
+            value={email}
+            placeholder="test@email.com"
+            onChangeText={value => setEmail(value)}
+          />
+          <Text style={styles.text}>Please enter your password</Text>
+          <TextInput
+            style={styles.input}
+            value={password}
+            placeholder="password"
+            secureTextEntry={true}
+            onChangeText={value => setPassword(value)}
+          />
+          <Text style={styles.text}>Please re-enter your password</Text>
+          <TextInput
+            style={styles.input}
+            value={passwordConfirmation}
+            placeholder="password"
+            secureTextEntry={true}
+            onChangeText={value => setPasswordConfirmation(value)}
+          />
+          <TouchableOpacity onPress={() => signupPressed()}>
+            <View style={styles.primaryButton}>
+              <Text style={styles.primaryButtonText}>Sign up</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              props.navigation.reset({
+                index: 0,
+                routes: [{ name: "Login" }]
+              })
+            }
+          >
+            <View style={styles.secondaryButton}>
+              <Text style={styles.secondaryButtonText}>Cancel</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() =>
-          props.navigation.reset({
-            index: 0,
-            routes: [{ name: "Login" }]
-          })
-        }
-      >
-        <View style={styles.secondaryButton}>
-          <Text style={styles.secondaryButtonText}>Cancel</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
