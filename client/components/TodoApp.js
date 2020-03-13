@@ -6,6 +6,7 @@ import Todos from "./todoApp/Todos";
 import Post from "./todoApp/Post";
 import AddPost from "./Posts/screens/AddPost";
 import EditPost from "./Posts/screens/EditPost";
+import DeletePost from "./Posts/screens/DeletePost";
 
 const Stack = createStackNavigator();
 
@@ -118,6 +119,15 @@ export default class TodoApp extends Component {
         <Stack.Screen name="EditPost">
           {props => (
             <EditPost
+              {...props}
+              jwt={this.props.jwt}
+              apiURI={this.props.apiURI}
+            />
+          )}
+        </Stack.Screen>
+        <Stack.Screen name="DeletePost">
+          {props => (
+            <DeletePost
               {...props}
               jwt={this.props.jwt}
               apiURI={this.props.apiURI}
