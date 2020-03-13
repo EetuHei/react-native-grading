@@ -37,6 +37,13 @@ const View1 = props => {
               <Text style={styles.primaryButtonText}>Logout</Text>
             </View>
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate("AddPost")}
+          >
+            <View style={styles.primaryButton}>
+              <Text style={styles.primaryButtonText}>Add Post</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
