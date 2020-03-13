@@ -35,6 +35,20 @@ const Post = ({ route, props }) => {
           <Text style={styles.primaryButtonText}>Edit Post</Text>
         </View>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          propData.navigation.navigate("DeletePost", {
+            tokenData: tokenData,
+            apiUriData: apiUriData,
+            postID: postID,
+            propData: propData
+          })
+        }
+      >
+        <View style={styles.primaryButton}>
+          <Text style={styles.primaryButtonText}>Delete Post</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
